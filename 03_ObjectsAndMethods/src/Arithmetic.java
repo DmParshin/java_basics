@@ -19,21 +19,21 @@ public class Arithmetic {
         y = b;
     }
 
-    public static int Sum(int x, int y) { return (x + y); } //  сумма
+    public static int sum(int x, int y) { return (x + y); } //  сумма
 
-    public static int Raz(int x, int y) { return (x - y); } //  разность
+    public static int difference(int x, int y) { return (x - y); } //  разность
 
-    public static int Umn(int x, int y) { return (x * y); } //  произведение
+    public static int multiplication(int x, int y) { return (x * y); } //  произведение
 
-    public static double SrZnach(double x, double y) { return ((x + y) / 2); }   //  среднее значение
+    public static double averageValue (double x, double y) { return ((x + y) / 2); }   //  среднее значение
 
-    public static int Max(int x, int y) {   //  максимальное значение
+    public static int max(int x, int y) {   //  максимальное значение
         if (x > y)
             return x;
         return (y);
     }
 
-    public static int Min(int x, int y) {   //  минимальное значение
+    public static int min(int x, int y) {   //  минимальное значение
         if (x < y)
             return x;
         return (y);
