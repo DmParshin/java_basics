@@ -49,7 +49,7 @@ public class Order {
         return fragile;
     }
 
-    public String print(){
+    public String toString(){
         return  (dimensions +
                 "\nМасса - " + mass +
                 "\nАдрес - " + address +

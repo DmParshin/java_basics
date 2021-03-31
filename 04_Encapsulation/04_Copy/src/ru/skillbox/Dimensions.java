@@ -48,7 +48,7 @@ public class Dimensions {
         return (wight * height * length);
     }
 
-    public String print(){
+    public String toString(){
         return "Ширина - " + wight + " Высота - " + height + " Длина - " + length;
     }
 }
