@@ -5,6 +5,9 @@ public class Basket {
     private int totalPrice = 0;
     private int limit;
 
+    private static double allTotalPrice;
+    private static int allTotalCount;
+
     private double totalWeight = 0; // Добавляем переменную общего веса
 
     public Basket() {
@@ -33,6 +36,14 @@ public class Basket {
         Basket.count = Basket.count + count;
     }
 
+    public static void increaseAllTotalCount(int count) {Basket.allTotalCount = Basket.allTotalCount + count;}
+
+    public static void increaseAllTotalPrice(int count, int price) {Basket.allTotalPrice = Basket.allTotalPrice + (count * price);}
+
+    public static double allAveragePrice(){ return allTotalPrice / allTotalCount; }
+
+    public static double allAveragePriceBasket() { return allTotalPrice / count; }
+
     public void add(String name, int price) {
         add(name, price, 1, 0);
     }
@@ -60,6 +71,9 @@ public class Basket {
             count + " шт. - " + price +  " у.е" + " - " + weight +  " g";
         totalPrice = totalPrice + count * price;
         totalWeight = totalWeight + count * weight;
+
+        increaseAllTotalCount(count);
+        increaseAllTotalPrice(count, price);
     }
 
     public void clear() {
@@ -89,5 +103,9 @@ public class Basket {
         }
         System.out.println("Total Price: " + this.getTotalPrice());
         System.out.println("Total Weight: " + this.getTotalWeight());
+        System.out.println("All Total Count: " + Basket.allTotalCount);
+        System.out.println("All Total Price: " + Basket.allTotalPrice);
+        System.out.println("All Average Price: " + Basket.allAveragePrice());
+        System.out.println("All Average per Basket: " + Basket.allAveragePriceBasket());
     }
 }
