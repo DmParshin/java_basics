@@ -12,9 +12,9 @@ public class Computer {
     public int cpuCores;
     public double cpuWeight;
 
-    public RamType ramType;
-    public int ramSize;
-    public double ramWeight;
+//    public RamType ramType;
+//    public int ramSize;
+//    public double ramWeight;
 
     public HarddiskType harddiskType;
     public int hddSize;
@@ -68,30 +68,30 @@ public class Computer {
         weight = weight + cpuWeight;
     }
 
-    public RamType getRamType() {
-        return ramType;
-    }
-
-    public void setRamType(RamType ramType) {
-        this.ramType = ramType;
-    }
-
-    public int getRamSize() {
-        return ramSize;
-    }
-
-    public void setRamSize(int ramSize) {
-        this.ramSize = ramSize;
-    }
-
-    public double getRamWeight() {
-        return ramWeight;
-    }
-
-    public void setRamWeight(double ramWeight) {
-        this.ramWeight = ramWeight;
-        weight = weight + ramWeight;
-    }
+//    public RamType getRamType() {
+//        return ramType;
+//    }
+//
+//    public void setRamType(RamType ramType) {
+//        this.ramType = ramType;
+//    }
+//
+//    public int getRamSize() {
+//        return ramSize;
+//    }
+//
+//    public void setRamSize(int ramSize) {
+//        this.ramSize = ramSize;
+//    }
+//
+//    public double getRamWeight() {
+//        return ramWeight;
+//    }
+//
+//    public void setRamWeight(double ramWeight) {
+//        this.ramWeight = ramWeight;
+//        weight = weight + ramWeight;
+//    }
 
     public HarddiskType getHarddiskType() {
         return harddiskType;
@@ -174,9 +174,9 @@ public class Computer {
                 + "\nЧастота процессора - " + cpuFrequency
                 + "\nКоличество ядер - " + cpuCores
                 + "\nВес процессора - " + cpuWeight
-                + "\nТип RAM - " + ramType
-                + "\nОбъем RAM - " + ramSize
-                + "\nВес RAM - " + ramWeight
+                + "\nТип RAM - " + Ram.getRamType()
+                + "\nОбъем RAM - " + Ram.getRamSize()
+                + "\nВес RAM - " + Ram.getRamWeight()
                 + "\nТип HDD - " + harddiskType
                 + "\nОбъем HDD - " + hddSize
                 + "\nВес HDD - " + hddWeight

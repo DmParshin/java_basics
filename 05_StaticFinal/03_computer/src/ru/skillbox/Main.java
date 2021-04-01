@@ -13,9 +13,7 @@ public class Main {
         comp1.setProcessorManufacturer(ProcessorManufacturer.AMD);
         comp1.setCpuWeight(555);
 
-        comp1.setRamType(RamType.DDR3);
-        comp1.setRamSize(8000);
-        comp1.setRamWeight(150);
+        Ram ram1 = new Ram(RamType.DDR5, 4000, 45);
 
         comp1.setHarddiskType(HarddiskType.SSD);
         comp1.setHddSize(16000);
@@ -34,9 +32,9 @@ public class Main {
         comp2.setProcessorManufacturer(ProcessorManufacturer.AMD);
         comp2.setCpuWeight(123);
 
-        comp2.setRamType(RamType.DDR4);
-        comp2.setRamSize(4222);
-        comp2.setRamWeight(150);
+//        comp2.setRamType(RamType.DDR4);
+//        comp2.setRamSize(4222);
+//        comp2.setRamWeight(150);
 
         comp2.setHarddiskType(HarddiskType.HDD);
         comp2.setHddSize(14000);
@@ -57,9 +55,9 @@ public class Main {
         comp3.setProcessorManufacturer(ProcessorManufacturer.AMD);
         comp3.setCpuWeight(515);
 
-        comp3.setRamType(RamType.DDR4);
-        comp3.setRamSize(4000);
-        comp3.setRamWeight(150);
+//        comp3.setRamType(RamType.DDR4);
+//        comp3.setRamSize(4000);
+//        comp3.setRamWeight(150);
 
         comp3.setHarddiskType(HarddiskType.HDD);
         comp3.setHddSize(11000);
