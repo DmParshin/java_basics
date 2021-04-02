@@ -11,15 +11,15 @@ public class Main {
     String text = "Вася заработал 5000 рублей, Петя - 7563 рубля, а Маша - 30000 рублей";
     int startWord = 0;
     int endWord;
-    int count = 0;
+    int countWords = 0;
     int sum = 0;
     for (int i = 0; i < text.length(); i++){
       if (text.charAt(i) == ' ') {
         endWord = i;
-        count++;
+        countWords++;
         String str = text.substring(startWord, endWord);
         startWord = i + 1;
-        if (count == 3 || count == 7 || count == 12){
+        if (countWords == 3 || countWords == 7 || countWords == 12){
           sum = sum + (Integer.parseInt(str));
           startWord = i + 1;
         }
