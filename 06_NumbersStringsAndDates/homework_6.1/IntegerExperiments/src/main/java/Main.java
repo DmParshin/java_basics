@@ -19,12 +19,25 @@ public class Main {
   В противном случае тестовый метод не сможет проверить ваш код
    */
 
+//  public static int sumDigits(Integer number) {
+//    if (number != null) {
+//      String str = number.toString();
+//      int sum = 0;
+//      for (int i = 0; i < str.length(); i++) {
+//        sum = sum + Integer.parseInt(String.valueOf(str.charAt(i)));
+//      }
+//      return sum;
+//    }
+//    else{
+//      return -1;
+//    }
+//  }
   public static int sumDigits(Integer number) {
     if (number != null) {
       String str = number.toString();
       int sum = 0;
       for (int i = 0; i < str.length(); i++) {
-        sum = sum + Integer.parseInt(String.valueOf(str.charAt(i)));
+        sum = sum + Character.getNumericValue(str.charAt(i));
       }
       return sum;
     }
