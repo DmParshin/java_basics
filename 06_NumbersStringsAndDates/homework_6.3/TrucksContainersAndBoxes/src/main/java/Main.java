@@ -3,10 +3,14 @@ import java.util.Scanner;
 
 public class Main {
 
+    static final int boxInContainer = 27;
+    static final int containerInTruck = 12;
+    static final int boxInTruck = boxInContainer * containerInTruck;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String boxes = scanner.nextLine();
-        int numberOfBoxes = Integer.parseInt(boxes) ;
+        int numberOfBoxes = Integer.parseInt(boxes);
         int x;
         int y;
         int trucksCount = 0;
@@ -17,22 +21,21 @@ public class Main {
                 trucksCount++;
                 System.out.println("Грузовик: " + trucksCount);
                 x = 1;
-                while((numberOfBoxes - (containerCount * 27) > 0) && x <= 12) {
-                    System.out.println("\tКонтейнер: " + x);
+                while ((numberOfBoxes - (containerCount * boxInContainer) > 0) && x <= containerInTruck) {
                     containerCount++;
+                    System.out.println("\tКонтейнер: " + containerCount);
                     x++;
                     y = 1;
-                    while ((numberOfBoxes > boxesCount) && y <= 27){
-                        System.out.println("\t\tЯщик: " + y);
+                    while ((numberOfBoxes > boxesCount) && y <= boxInContainer) {
                         boxesCount++;
+                        System.out.println("\t\tЯщик: " + boxesCount);
                         y++;
                     }
                 }
             }
-            while (trucksCount * 324 < numberOfBoxes);
+            while (trucksCount * boxInTruck < numberOfBoxes);
 
-            System.out.println("Необходимо:\nгрузовиков - " + trucksCount + " шт."+ "\nконтейнеров - " + containerCount + " шт.");
         }
+        System.out.println("Необходимо:\nгрузовиков - " + trucksCount + " шт." + "\nконтейнеров - " + containerCount + " шт.");
     }
-
 }
