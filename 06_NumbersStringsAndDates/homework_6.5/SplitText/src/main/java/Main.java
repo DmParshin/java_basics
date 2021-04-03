@@ -10,10 +10,7 @@ public class Main {
   }
 
   public static String splitTextIntoWords(String text) {
-    text = text.replaceAll("[\n\\s+.,;-[0-9]]", " ");
-    text = text.trim().replaceAll("\\s+\\B", "");
-    text = text.replaceAll("[\\s]", "\n");
-    return text;
+    return text.replaceAll("[\\d\\s\\p{Punct}]+", "\n").trim();
   }
 
 }
