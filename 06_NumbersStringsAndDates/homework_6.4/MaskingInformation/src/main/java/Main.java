@@ -12,15 +12,12 @@ public class Main {
     }
 
     public static String searchAndReplaceDiamonds(String text, String placeholder) {
-        System.out.println(text.indexOf('<'));
-        System.out.println(text.indexOf('>'));
-
         while (text.indexOf('<') > 0 && text.indexOf('>') > 0) {
             String str = text.substring(text.indexOf('<'), text.indexOf('>') + 1);
             text = text.replace(str, placeholder);
             System.out.println(text);
         }
-       return text;
+        return text;
     }
 
 }
