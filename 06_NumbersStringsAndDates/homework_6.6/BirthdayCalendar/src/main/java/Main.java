@@ -1,22 +1,29 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int day = 31;
-        int month = 12;
-        int year = 1990;
+        int day = 18;
+        int month = 8;
+        int year = 1987;
 
         System.out.println(collectBirthdays(year, month, day));
 
     }
 
     public static String collectBirthdays(int year, int month, int day) {
-
-        //TODO реализуйте метод для построения строки в следующем виде
-        //0 - 31.12.1990 - Mon
-        //1 - 31.12.1991 - Tue
-        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - EEEE");
+        Calendar calendar = Calendar.getInstance();
+        int d = 0;
+        for (int i = 1987; i < 2021; i++){
+            calendar.set(Calendar.YEAR, i);
+            calendar.set(Calendar.DAY_OF_MONTH, day);
+            calendar.set(Calendar.MONTH, month - 1);
+            System.out.println(d + " - " + dateFormat.format(calendar.getTime()));
+            d++;
+        }
         return "";
     }
 }
