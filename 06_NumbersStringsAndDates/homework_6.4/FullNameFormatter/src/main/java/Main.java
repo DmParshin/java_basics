@@ -21,6 +21,10 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
+    final int A = 1040;
+    final int я = 1103;
+    final int space = 32;
+    final int hyphen = 45;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -41,11 +45,10 @@ public class Main {
       }
       for (int i = 0; i < input.length(); i++){
         c = input.charAt(i);
-        if ((c >= 1040 && c <= 1103 ) || c == 32 || c == 45) {
-            if (c == 32 || i == (input.length() - 1) ){
+        if ((c >= A && c <= я ) || c == space || c == hyphen) {
+            if (c == space || i == (input.length() - 1) ){
             endWord = i;
             countWords++;
-            //String str = input.substring(startWord, endWord);
             switch (countWords) {
                 case (1):
                   surname = (input.substring(startWord, endWord));
