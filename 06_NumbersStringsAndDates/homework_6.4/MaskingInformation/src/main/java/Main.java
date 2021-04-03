@@ -8,25 +8,18 @@
 public class Main {
 
     public static void main(String[] args) {
-        //searchAndReplaceDiamonds("sd<as>df<sdf>sd", "kuku");
+        searchAndReplaceDiamonds("sd<as>df<sdf>sd", "kuku");
     }
 
     public static String searchAndReplaceDiamonds(String text, String placeholder) {
-       for (int i = 0; i < text.length(); i++) {
-           if (text.charAt(i) == '<'){
-               for(int j = i; j < text.length(); j++){
-                   if (text.charAt(j) == '>'){
-                           String str = text.substring(i, j + 1);
-                           text = text.replace(str, placeholder);
-                           i = j + 1;
-                   }
-                   else if ((text.charAt(j) == '<')){
-                       i = j;
-                   }
-               }
-           }
-       }
-       //System.out.println("New string: " + text);
+        System.out.println(text.indexOf('<'));
+        System.out.println(text.indexOf('>'));
+
+        while (text.indexOf('<') > 0 && text.indexOf('>') > 0) {
+            String str = text.substring(text.indexOf('<'), text.indexOf('>') + 1);
+            text = text.replace(str, placeholder);
+            System.out.println(text);
+        }
        return text;
     }
 
