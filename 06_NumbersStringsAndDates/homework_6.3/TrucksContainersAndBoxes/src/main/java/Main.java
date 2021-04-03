@@ -1,11 +1,10 @@
-import java.awt.*;
 import java.util.Scanner;
 
 public class Main {
 
-    static final int boxInContainer = 27;
-    static final int containerInTruck = 12;
-    static final int boxInTruck = boxInContainer * containerInTruck;
+    static final int BOX_IN_CONTAINER = 27;
+    static final int CONTAINER_IN_TRUCK = 12;
+    static final int BOX_IN_TRUCK = BOX_IN_CONTAINER * CONTAINER_IN_TRUCK;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -21,19 +20,19 @@ public class Main {
                 trucksCount++;
                 System.out.println("Грузовик: " + trucksCount);
                 x = 1;
-                while ((numberOfBoxes - (containerCount * boxInContainer) > 0) && x <= containerInTruck) {
+                while ((numberOfBoxes - (containerCount * BOX_IN_CONTAINER) > 0) && x <= CONTAINER_IN_TRUCK) {
                     containerCount++;
                     System.out.println("\tКонтейнер: " + containerCount);
                     x++;
                     y = 1;
-                    while ((numberOfBoxes > boxesCount) && y <= boxInContainer) {
+                    while ((numberOfBoxes > boxesCount) && y <= BOX_IN_CONTAINER) {
                         boxesCount++;
                         System.out.println("\t\tЯщик: " + boxesCount);
                         y++;
                     }
                 }
             }
-            while (trucksCount * boxInTruck < numberOfBoxes);
+            while (trucksCount * BOX_IN_TRUCK < numberOfBoxes);
 
         }
         System.out.println("Необходимо:\nгрузовиков - " + trucksCount + " шт." + "\nконтейнеров - " + containerCount + " шт.");
