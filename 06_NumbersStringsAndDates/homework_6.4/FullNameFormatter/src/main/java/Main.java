@@ -21,10 +21,10 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    final int A = 1040;
-    final int я = 1103;
-    final int space = 32;
-    final int hyphen = 45;
+    final int BIG_FIRST_CHAR = 1040;
+    final int SMALL_LAST_CHAR = 1103;
+    final int SPACE = 32;
+    final int HYPHEN = 45;
 
     Scanner scanner = new Scanner(System.in);
 
@@ -45,8 +45,8 @@ public class Main {
       }
       for (int i = 0; i < input.length(); i++){
         c = input.charAt(i);
-        if ((c >= A && c <= я ) || c == space || c == hyphen) {
-            if (c == space || i == (input.length() - 1) ){
+        if ((c >= BIG_FIRST_CHAR && c <= SMALL_LAST_CHAR ) || c == SPACE || c == HYPHEN) {
+            if (c == SPACE || i == (input.length() - 1) ){
             endWord = i;
             countWords++;
             switch (countWords) {
