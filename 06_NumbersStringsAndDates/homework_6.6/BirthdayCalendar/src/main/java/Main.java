@@ -1,5 +1,5 @@
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class Main {
@@ -15,23 +15,20 @@ public class Main {
     }
 
     public static String collectBirthdays(int year, int month, int day) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy - EE",Locale.ENGLISH);
 
-        Calendar todayDate = Calendar.getInstance();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy - EE", new Locale("ENGLISH"));
 
-        Calendar setCalendar = Calendar.getInstance();
-        setCalendar.set(Calendar.YEAR, year);
-        setCalendar.set(Calendar.DAY_OF_MONTH, day);
-        setCalendar.set(Calendar.MONTH, month - 1);
+        LocalDate birthday = LocalDate.of(year, month, day);
+        LocalDate today = LocalDate.now();
+
         int d = 0;
-        String str = "";
-        while (setCalendar.before(todayDate) || setCalendar.equals(todayDate)) {
-            str = str + (d + " - " + dateFormat.format(setCalendar.getTime()) + System.lineSeparator());
-            setCalendar.set(Calendar.YEAR, year + d + 1);
-            setCalendar.set(Calendar.DAY_OF_MONTH, day);
-            setCalendar.set(Calendar.MONTH, month - 1);
+        StringBuilder str = new StringBuilder();
+
+        while (birthday.isBefore(today) || birthday.equals(today)) {
+            str.append(d).append(" - ").append(birthday.format(formatter)).append(System.lineSeparator());
+            birthday = birthday.plusYears(1);
             d++;
         }
-        return str;
+        return str.toString();
     }
 }
