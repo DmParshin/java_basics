@@ -12,8 +12,8 @@ public class Hospital {
 
     final static float MIN_TEMP = 32; // Начальное значение диапазона - "от"
     final static float MAX_TEMP = 40; // Конечное значение диапазона - "до"
-    final static float HEALTHYMAN_TEMP_MIN = 35.5f;
-    final static float HEALTHYMAN_TEMP_MAX = 37.2f;
+    final static float HEALTHYMAN_TEMP_MIN = 36.2f;
+    final static float HEALTHYMAN_TEMP_MAX = 36.9f;
 
     public static float[] generatePatientsTemperatures(int patientsCount) {
 
@@ -23,7 +23,7 @@ public class Hospital {
             float[] patientsTemperature = new float[patientsCount];
 
             for (int i = 0; i < patientsTemperature.length; i++){
-                patientsTemperature[i] = MIN_TEMP + (float) Math.round((Math.random() * (MAX_TEMP - MIN_TEMP) * 10)) / 10;
+                patientsTemperature[i] = MIN_TEMP + (float) Math.round((Math.random() * ((MAX_TEMP - 0.1)  - (MIN_TEMP + 0.1))) * 10) / 10;
             }
 
             return patientsTemperature;
@@ -48,10 +48,10 @@ public class Hospital {
             }
         }
 
-        float averageTemp = summTemp / temperatureData.length;
+        float averageTemp = (float)(Math.round((summTemp / temperatureData.length) * 100)) / 100;
 
         String report =
-                "Температуры пациентов: " + strTemp +
+                "Температуры пациентов: " + strTemp.trim() +
                         "\nСредняя температура: " + averageTemp +
                         "\nКоличество здоровых: " + healthyMan;
 
