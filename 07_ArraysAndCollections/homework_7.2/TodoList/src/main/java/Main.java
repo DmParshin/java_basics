@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
+
     private static TodoList todoList = new TodoList();
 
     public static void main(String[] args) {

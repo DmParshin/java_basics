@@ -1,15 +1,34 @@
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class EmailList {
 
+    String pattern = "^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]{2,6}$";
+    TreeSet<String> emails = new TreeSet<>();
+
+    public EmailList() { TreeSet<String> emails = new TreeSet<>();}
+
     public void add(String email) {
-        // TODO: валидный формат email добавляется
+//        System.out.println(emailString);
+        if( emails.contains(email)) {
+            System.out.println("Дубликат - " + email);
+        }
+        else if( email.matches(pattern)){
+//            System.out.println("Valid!");
+            this.emails.add(email.toLowerCase());
+            }
+        else {
+//            System.out.println(email);
+            System.out.println(Main.WRONG_EMAIL_ANSWER);}
     }
 
     public List<String> getSortedEmails() {
         // TODO: возвращается список электронных адресов в алфавитном порядке
-        return Collections.emptyList();
+        ArrayList<String> emailList = new ArrayList<>();
+        for (String email : emails) {
+//            System.out.println(email);
+            emailList.add(email);
+        }
+        return emailList;
     }
 
 }

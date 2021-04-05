@@ -19,15 +19,21 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        EmailList emailList = new EmailList();
         
         while (true) {
             String input = scanner.nextLine();
             if (input.equals("0")) {
                 break;
             }
-            
-            //TODO: write code here
-            
+            if (input.substring(0, 3).equals("ADD")){
+//                System.out.println("ADD ");
+                emailList.add(input.substring(4));
+            }
+            else if (input.substring(0, 4).equals("LIST")){
+//                System.out.println("LIST");
+                emailList.getSortedEmails();
+            }
         }
     }
 }
