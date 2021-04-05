@@ -6,6 +6,7 @@ public class TodoList {
 
     public TodoList() {
         ArrayList<String> todoList = new ArrayList<>();
+        this.todoList.add("Список дел:");
     }
 
     public void add(String todo) {
