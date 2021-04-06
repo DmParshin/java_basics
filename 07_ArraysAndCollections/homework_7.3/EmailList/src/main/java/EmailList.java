@@ -8,24 +8,23 @@ public class EmailList {
     public EmailList() { TreeSet<String> emails = new TreeSet<>();}
 
     public void add(String email) {
-//        System.out.println(emailString);
+//        System.out.println(email);
         if( emails.contains(email)) {
-            System.out.println("Дубликат - " + email);
+            System.out.println(Main.EMAIL_IS_DUPLICATE + email);
         }
         else if( email.matches(pattern)){
-//            System.out.println("Valid!");
+            System.out.println(Main.EMAIL_IS_ADDED + email);
             this.emails.add(email.toLowerCase());
             }
         else {
 //            System.out.println(email);
-            System.out.println(Main.WRONG_EMAIL_ANSWER);}
+            System.out.println(Main.WRONG_EMAIL_ANSWER + email);}
     }
 
     public List<String> getSortedEmails() {
-        // TODO: возвращается список электронных адресов в алфавитном порядке
         ArrayList<String> emailList = new ArrayList<>();
         for (String email : emails) {
-//            System.out.println(email);
+            System.out.println(email);
             emailList.add(email);
         }
         return emailList;
