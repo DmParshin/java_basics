@@ -10,7 +10,7 @@ public class Main {
      - посчитать время поиска введимого номера в консоль в каждой из структуры данных
      - проанализоровать полученные данные
      */
-    private static String TEST_NUMBER = "С777УР123";
+    private static String TEST_NUMBER = "Н777УР123";
 
 
     public static void main(String[] args) {
@@ -19,9 +19,9 @@ public class Main {
         TreeSet<String> testTreeSet = new TreeSet<>(testArray);
 
         CoolNumbers.bruteForceSearchInList(testArray, TEST_NUMBER);
-        CoolNumbers.binarySearchInList(testArray, TEST_NUMBER);
         CoolNumbers.searchInHashSet(testHashSet, TEST_NUMBER);
         CoolNumbers.searchInTreeSet(testTreeSet, TEST_NUMBER);
+        CoolNumbers.binarySearchInList(testArray, TEST_NUMBER);
 
     }
 }

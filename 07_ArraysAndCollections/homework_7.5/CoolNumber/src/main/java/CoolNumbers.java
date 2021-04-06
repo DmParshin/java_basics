@@ -42,6 +42,7 @@ public class CoolNumbers {
     }
 
     public static boolean binarySearchInList(List<String> sortedList, String number) {
+        ArrayList<String> sortArray = new ArrayList<>();
         Collections.sort(sortedList);
         startTime = System.nanoTime();
         if (Collections.binarySearch(sortedList, number) > 0 ){
