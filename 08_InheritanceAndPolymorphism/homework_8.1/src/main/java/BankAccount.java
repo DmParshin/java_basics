@@ -21,4 +21,13 @@ public class BankAccount {
       money = money - amountToTake;
     }
   }
+
+  protected boolean send(BankAccount receiver, double amount){
+    if (amount <= money){
+      take(amount);
+      receiver.put(amount);
+      return true;
+    }
+    return false;
+  }
 }

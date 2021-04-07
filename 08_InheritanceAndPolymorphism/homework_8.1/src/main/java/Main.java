@@ -18,5 +18,10 @@ public class Main {
         System.out.println("depositAccount = " + depositAccount.getAmount());
         depositAccount.take(112);
 
+        BankAccount bankAccount1 = new BankAccount();
+        bankAccount.send(bankAccount1, 649);
+        System.out.println("bankAccount = " + bankAccount.getAmount());
+        System.out.println("bankAccount1 = " + bankAccount1.getAmount());
+
     }
 }
