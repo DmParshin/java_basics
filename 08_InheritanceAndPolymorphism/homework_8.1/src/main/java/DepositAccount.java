@@ -10,21 +10,20 @@ import java.time.temporal.ChronoUnit;
 public class DepositAccount extends BankAccount {
 
 
-    LocalDate lastIncome = LocalDate.of(2021,02,01);
-    LocalDate today = LocalDate.now();
+    private LocalDate lastIncome = LocalDate.now();
+    private LocalDate today = LocalDate.now();
 
-    public void put(double amountToPut) {
+    protected void put(double amountToPut) {
         if (amountToPut > 0){
-            this.money += amountToPut;
+             money = money + (amountToPut);
         }
-        this.lastIncome = LocalDate.now();
+        lastIncome = LocalDate.now();
     }
 
-    public void take(double amountToTake){
+    protected void take(double amountToTake){
         long DAYS;
-        if (ChronoUnit.DAYS.between(lastIncome,today) >= 30 && amountToTake <= money){
-            this.money -= amountToTake;
-        }
-        System.out.println("it is not possible to receive money");
+        if (ChronoUnit.DAYS.between(lastIncome,today) >= 30 && amountToTake <= getAmount()){
+            money = money - amountToTake;
+        }else System.out.println("it is not possible to receive money");
     }
 }

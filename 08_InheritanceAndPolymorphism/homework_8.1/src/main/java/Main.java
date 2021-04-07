@@ -14,9 +14,9 @@ public class Main {
         System.out.println("cardAccount = " + cardAccount.getAmount());
 
         DepositAccount depositAccount = new DepositAccount();
-        depositAccount.put(111.0);
+        depositAccount.put(111);
         System.out.println("depositAccount = " + depositAccount.getAmount());
-        depositAccount.take(100);
+        depositAccount.take(112);
 
     }
 }

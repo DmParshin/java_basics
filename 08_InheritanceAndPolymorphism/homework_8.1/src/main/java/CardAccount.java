@@ -3,9 +3,9 @@
 
 public class CardAccount extends BankAccount {
 
-    public void take(double amountToTake){
-        if (amountToTake + (amountToTake / 100) <= this.money){
-            this.money -= (amountToTake + (amountToTake / 100));
+    protected void take(double amountToTake){
+        if (amountToTake + (amountToTake / 100) <= getAmount()){
+            money = money - (amountToTake + (amountToTake / 100));
         }
     }
 

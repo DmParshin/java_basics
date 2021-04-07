@@ -4,21 +4,21 @@
 
 public class BankAccount {
 
-  double money = 0;
+  protected double money;
 
-  public double getAmount() {
+  protected double getAmount() {
     return this.money;
   }
 
-  public void put(double amountToPut) {
+  protected void put(double amountToPut) {
     if (amountToPut > 0){
-      this.money =+ amountToPut;
+      money = money + amountToPut;
     }
   }
 
-  public void take(double amountToTake) {
-    if (amountToTake <= this.money){
-      this.money -= amountToTake;
+  protected void take(double amountToTake) {
+    if (amountToTake <= money){
+      money = money - amountToTake;
     }
   }
 }
