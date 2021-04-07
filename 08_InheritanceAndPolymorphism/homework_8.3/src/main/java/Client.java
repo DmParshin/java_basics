@@ -1,16 +1,18 @@
 public abstract class Client {
 
+    protected double sum;
+
     public double getAmount() {
-        //TODO: реализуйте метод и удалите todo
+        System.out.println(sum);
         return 0;
     }
 
     public void put(double amountToPut) {
-        //TODO: реализуйте метод и удалите todo
+        if (amountToPut > 0){ sum = sum + amountToPut;}
     }
 
     public void take(double amountToTake) {
-        //TODO: реализуйте метод и удалите todo
+        if (amountToTake <= sum){ sum = sum - amountToTake;}
     }
 
 }
