@@ -4,7 +4,7 @@ public abstract class Client {
 
     public double getAmount() {
         System.out.println(sum);
-        return 0;
+        return sum;
     }
 
     public void put(double amountToPut) {
