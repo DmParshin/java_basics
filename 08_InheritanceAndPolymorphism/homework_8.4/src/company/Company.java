@@ -1,0 +1,101 @@
+//Создайте класс компании Company, содержащей сотрудников и реализующей методы:
+//        найм одного сотрудника — hire(),
+//        найм списка сотрудников – hireAll(),
+//        увольнение сотрудника – fire(),
+//        получение значения дохода компании – getIncome().
+// Аргументы и возвращаемое значение методов выберите на основании логики работы вашего приложения.
+
+package company;
+import java.util.ArrayList;
+
+public class Company {
+
+    public static ArrayList<Employee> employees = new ArrayList<>();
+
+    private static double income;
+    public static String name;
+
+    public Company(String name, double income) {
+        this.name = name;
+        this.income = income;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setIncome(double income) {
+        this.income = income;
+    }
+
+    public static String getName(){
+        return name;
+    }
+
+    public static double getIncome() {
+        return income;
+    }
+
+    public void hire(Employee employee) {
+        employees.add(employee);
+    }
+
+    public void fire (Employee employee){
+        employees.remove(employee);
+    }
+
+    public void printAll (){
+        for (Employee employee : employees){
+            System.out.println(employee.getToString());
+        }
+    }
+
+    public ArrayList<Employee> hireAll (Employee employee,int count){
+        if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                employees.add(employee);
+            }
+        }
+        return employees;
+    }
+
+    public ArrayList<Employee> fireAll (int count) {
+        if (count > 0 && count < employees.size()) {
+            for (int i = 0; i < count; i++) {
+                employees.remove(i);
+            }
+        }
+        return employees;
+    }
+
+
+    public ArrayList<Employee> getTopSalaryStaff ( int count ){
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator().reversed());
+            System.out.println(+count + " top salary:");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<Employee> getLowestSalaryStaff ( int count ){
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator());
+            System.out.println(count + " lowest salary ");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
+        return null;
+    }
+}

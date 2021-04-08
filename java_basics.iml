@@ -6,9 +6,11 @@
       <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.1/IntegerExperiments/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.4/AllCodesOfChars/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.4/TotalEarningsCalculator/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/08_InheritanceAndPolymorphism/homework_8.4/src" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.8-1" level="project" />
   </component>
 </module>
