@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public class Company {
 
-    public static ArrayList<Employee> employees = new ArrayList<>();
+    public ArrayList<Employee> employees = new ArrayList<>();
 
     private static double income;
-    public static String name;
+    private String name;
 
     public Company(String name, double income) {
         this.name = name;
@@ -28,7 +28,7 @@ public class Company {
         this.income = income;
     }
 
-    public static String getName(){
+    public String getName(){
         return name;
     }
 
