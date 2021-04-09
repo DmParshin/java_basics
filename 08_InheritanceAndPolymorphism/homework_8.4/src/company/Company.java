@@ -12,7 +12,7 @@ public class Company {
 
     public ArrayList<Employee> employees = new ArrayList<>();
 
-    private double income;
+    public static double income;
     public String name;
 
     public Company(String name, double income) {
@@ -32,7 +32,7 @@ public class Company {
         return name;
     }
 
-    public double getIncome() {
+    public static double getIncome() {
         return income;
     }
 
@@ -50,19 +50,22 @@ public class Company {
         }
     }
 
-//    public ArrayList<Employee> hireAll (String position, int count){
-//            for (int i = 0; i < count; i++) {
-//                switch (position) {
-//                    case "Operator":
-//                        employees.add(new Operator());
-//                    case "Manager":
-//                        employees.add(new Manager());
-//                    case "TopManager":
-//                        employees.add(new TopManager();
-//                }
-//            }
-//        return employees;
-//    }
+    public ArrayList<Employee> hireAll (String position, int count){
+            for (int i = 0; i < count; i++) {
+                switch (position) {
+                    case "Operator":
+                        employees.add(new Operator());
+                        break;
+                    case "Manager":
+                        employees.add(new Manager());
+                        break;
+                    case "TopManager":
+                        employees.add(new TopManager());
+                        break;
+                }
+            }
+        return employees;
+    }
 
     public ArrayList<Employee> fireAll (int count) {
         if (count > 0 && count < employees.size()) {
@@ -72,7 +75,20 @@ public class Company {
         }
         return employees;
     }
-
+    public ArrayList<Employee> getLowestSalaryStaff ( int count ){
+        if (count > 0 && count < employees.size()) {
+            employees.sort(new EmployeeComparator());
+            System.out.println(count + " lowest salary ");
+            int i = 0;
+            for (Employee employee : employees) {
+                if (i < count) {
+                    System.out.println(employee.getToString());
+                    i++;
+                }
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Employee> getTopSalaryStaff ( int count ){
         if (count > 0 && count < employees.size()) {
@@ -89,18 +105,5 @@ public class Company {
         return null;
     }
 
-    public ArrayList<Employee> getLowestSalaryStaff ( int count ){
-        if (count > 0 && count < employees.size()) {
-            employees.sort(new EmployeeComparator());
-            System.out.println(count + " lowest salary ");
-            int i = 0;
-            for (Employee employee : employees) {
-                if (i < count) {
-                    System.out.println(employee.getToString());
-                    i++;
-                }
-            }
-        }
-        return null;
-    }
+
 }

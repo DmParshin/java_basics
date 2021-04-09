@@ -2,32 +2,27 @@
 //если доход компании более 10 млн рублей.
 package company;
 
-import javax.swing.*;
-
 public class TopManager implements Employee{
 
     private final double FIX_SALARY = 50000;
     private double MONTH_SALARY;
     private String position = "Top-manager";
 
-    private Company employeeCompany;
 
-
-    public TopManager(Company company)  {
+    public TopManager()  {
         getPosition();
         getMonthSalary();
-        employeeCompany = company;
     }
 
 
     @Override
     public double getMonthSalary() {
-        if (employeeCompany.getIncome() > 10000000) {
-            this.MONTH_SALARY = (FIX_SALARY + ((FIX_SALARY * 150) / 100));
+        if (Company.getIncome() > 10000000) {
+            MONTH_SALARY = (FIX_SALARY + ((FIX_SALARY * 150) / 100));
         } else {
-            this.MONTH_SALARY = FIX_SALARY;
+            MONTH_SALARY = FIX_SALARY;
         }
-        return this.MONTH_SALARY;
+        return MONTH_SALARY;
     }
 
     @Override
