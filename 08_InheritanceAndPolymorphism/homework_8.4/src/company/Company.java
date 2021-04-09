@@ -12,8 +12,8 @@ public class Company {
 
     public ArrayList<Employee> employees = new ArrayList<>();
 
-    private static double income;
-    private String name;
+    private double income;
+    public String name;
 
     public Company(String name, double income) {
         this.name = name;
@@ -32,7 +32,7 @@ public class Company {
         return name;
     }
 
-    public static double getIncome() {
+    public double getIncome() {
         return income;
     }
 
@@ -50,14 +50,19 @@ public class Company {
         }
     }
 
-    public ArrayList<Employee> hireAll (Employee employee,int count){
-        if (count > 0) {
-            for (int i = 0; i < count; i++) {
-                employees.add(employee);
-            }
-        }
-        return employees;
-    }
+//    public ArrayList<Employee> hireAll (String position, int count){
+//            for (int i = 0; i < count; i++) {
+//                switch (position) {
+//                    case "Operator":
+//                        employees.add(new Operator());
+//                    case "Manager":
+//                        employees.add(new Manager());
+//                    case "TopManager":
+//                        employees.add(new TopManager();
+//                }
+//            }
+//        return employees;
+//    }
 
     public ArrayList<Employee> fireAll (int count) {
         if (count > 0 && count < employees.size()) {

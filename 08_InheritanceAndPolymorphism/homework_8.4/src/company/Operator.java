@@ -6,6 +6,7 @@ public class Operator implements Employee {
     private final double MONTH_SALARY = FIX_SALARY;
     private String position = "Operator";
 
+
     public Operator() {
         getPosition();
         getMonthSalary();
