@@ -17,6 +17,7 @@ public class RouteCalculator {
 
     public List<Station> getShortestRoute(Station from, Station to) {
         List<Station> route = getRouteOnTheLine(from, to);
+
         if (route != null) {
             return route;
         }
@@ -76,14 +77,14 @@ public class RouteCalculator {
     }
 
     private List<Station> getRouteWithOneConnection(Station from, Station to) {
-        if (from.getLine().equals(to.getLine())) {
+        if (from.getLine().equals(to.getLine()) || Math.abs(from.getLine().getNumber() - to.getLine().getNumber()) > 1) {
             return null;
         }
 
         List<Station> route = new ArrayList<>();
-
         List<Station> fromLineStations = from.getLine().getStations();
         List<Station> toLineStations = to.getLine().getStations();
+
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
                 if (isConnected(srcStation, dstStation)) {
@@ -122,16 +123,13 @@ public class RouteCalculator {
         if (from.getLine().equals(to.getLine())) {
             return null;
         }
-
-        ArrayList<Station> route = new ArrayList<>();
-
+        List<Station> route = new ArrayList<>();
         List<Station> fromLineStations = from.getLine().getStations();
         List<Station> toLineStations = to.getLine().getStations();
 
         for (Station srcStation : fromLineStations) {
             for (Station dstStation : toLineStations) {
-                List<Station> connectedLineRoute =
-                        getRouteViaConnectedLine(srcStation, dstStation);
+                List<Station> connectedLineRoute = getRouteViaConnectedLine(srcStation, dstStation);
                 if (connectedLineRoute == null) {
                     continue;
                 }

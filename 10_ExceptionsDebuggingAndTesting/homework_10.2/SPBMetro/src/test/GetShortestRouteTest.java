@@ -70,8 +70,6 @@ public class GetShortestRouteTest extends TestCase {
         Station stationFrom = stationIndex.getStation("L1-ST-1");
         Station stationTo = stationIndex.getStation("L1-ST-1");
 
-        routeCalculator.getShortestRoute(stationFrom, stationTo);
-
         String str = "";
 
         for (Station items : routeCalculator.getShortestRoute(stationFrom, stationTo)){
@@ -89,8 +87,6 @@ public class GetShortestRouteTest extends TestCase {
 
         Station stationFrom = stationIndex.getStation("L1-ST-1");
         Station stationTo = stationIndex.getStation("L1-ST-2");
-
-        routeCalculator.getShortestRoute(stationFrom, stationTo);
 
         String str = "";
 
@@ -110,7 +106,6 @@ public class GetShortestRouteTest extends TestCase {
         Station stationFrom = stationIndex.getStation("L2-ST-1");
         Station stationTo = stationIndex.getStation("L2-ST-3");
 
-        routeCalculator.getShortestRoute(stationFrom, stationTo);
 
         String str = "";
 
@@ -123,14 +118,13 @@ public class GetShortestRouteTest extends TestCase {
         assertEquals(expected, actual);
     }
 
-    public void test_stations_with_one_tranfer(){
+    public void test_stations_with_one_transfer(){
 
         routeCalculator = new RouteCalculator(stationIndex);
 
         Station stationFrom = stationIndex.getStation("L1-ST-1");
         Station stationTo = stationIndex.getStation("L2-ST-1");
 
-        routeCalculator.getShortestRoute(stationFrom, stationTo);
 
         String str = "";
 
@@ -149,8 +143,6 @@ public class GetShortestRouteTest extends TestCase {
 
         Station stationFrom = stationIndex.getStation("L1-ST-1");
         Station stationTo = stationIndex.getStation("L3-ST-2");
-
-        routeCalculator.getShortestRoute(stationFrom, stationTo);
 
         String str = "";
 
