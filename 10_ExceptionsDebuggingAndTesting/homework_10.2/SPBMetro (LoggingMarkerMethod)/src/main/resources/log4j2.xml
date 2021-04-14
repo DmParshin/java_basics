@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{'Date:'yyyy-MM-dd' Time:'HH:mm:ss.SSSZ} %p %m%n</Property>
+        <Property name="APP_LOG_ROOT">logs/</Property>
+    </Properties>
+
+    <Appenders>
+
+        <File name="SearchFile1" fileName="logs/search.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <MarkerFilter marker="INPUT_HISTORY" />
+            </Filters>
+        </File>
+
+        <File name="SearchFile2" fileName="logs/input_errors.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <MarkerFilter marker="INVALID_STATIONS" />
+            </Filters>
+        </File>
+
+        <File name="SearchFile3" fileName="logs/exceptions.log">
+            <PatternLayout pattern="%msg%n"/>
+            <Filters>
+                <MarkerFilter marker="EXCEPTION" />
+            </Filters>
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="info">
+            <AppenderRef ref="SearchFile1" />
+            <AppenderRef ref="SearchFile2" />
+            <AppenderRef ref="SearchFile3" />
+        </Root>
+
+
+    </Loggers>
+
+</Configuration>
