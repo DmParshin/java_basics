@@ -34,9 +34,13 @@ public class GetShortestRouteTest extends TestCase {
         Station st2l2 = new Station("L2-ST-2", lineSecond);
         Station st3l2 = new Station("L2-ST-3", lineSecond);
 
+        Station st4l2 = new Station("L2-ST-4", lineSecond); //!
+
         lineSecond.addStation(st1l2);
         lineSecond.addStation(st2l2);
         lineSecond.addStation(st3l2);
+
+        lineSecond.addStation(st4l2);                           //!
 
         Station st1l3 = new Station("L3-ST-1", lineThird);
         Station st2l3 = new Station("L3-ST-2", lineThird);
@@ -51,16 +55,20 @@ public class GetShortestRouteTest extends TestCase {
         stationIndex.addStation(st2l2);
         stationIndex.addStation(st3l2);
 
+        stationIndex.addStation(st4l2);                         //!
+
         stationIndex.addStation(st1l3);
         stationIndex.addStation(st2l3);
 
-        List<Station> connections= new ArrayList<>();
-        connections.add(st2l1);
-        connections.add(st2l2);
-        connections.add(st3l2);
-        connections.add(st1l3);
-        stationIndex.addConnection(connections);
+        List<Station> connections1= new ArrayList<>();
+        connections1.add(st2l1);
+        connections1.add(st2l2);
+        stationIndex.addConnection(connections1);
 
+        List<Station> connections2= new ArrayList<>();
+        connections2.add(st4l2);
+        connections2.add(st1l3);
+        stationIndex.addConnection(connections2);
     }
 
     public void test_distance_to_same_station(){
@@ -104,7 +112,7 @@ public class GetShortestRouteTest extends TestCase {
         routeCalculator = new RouteCalculator(stationIndex);
 
         Station stationFrom = stationIndex.getStation("L2-ST-1");
-        Station stationTo = stationIndex.getStation("L2-ST-3");
+        Station stationTo = stationIndex.getStation("L2-ST-4");
 
 
         String str = "";
@@ -114,7 +122,7 @@ public class GetShortestRouteTest extends TestCase {
         }
 
         String actual = str;
-        String expected = "L2-ST-1\nL2-ST-2\nL2-ST-3\n";
+        String expected = "L2-ST-1\nL2-ST-2\nL2-ST-3\nL2-ST-4\n";
         assertEquals(expected, actual);
     }
 
@@ -151,7 +159,7 @@ public class GetShortestRouteTest extends TestCase {
         }
 
         String actual = str;
-        String expected = "L1-ST-1\nL1-ST-2\nL2-ST-2\nL2-ST-3\nL3-ST-1\nL3-ST-2\n";
+        String expected = "L1-ST-1\nL1-ST-2\nL2-ST-2\nL2-ST-3\nL2-ST-4\nL3-ST-1\nL3-ST-2\n";
         assertEquals(expected, actual);
     }
 }
