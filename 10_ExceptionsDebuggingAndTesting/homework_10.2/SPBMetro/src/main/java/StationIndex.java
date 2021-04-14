@@ -1,10 +1,16 @@
 import core.Line;
 import core.Station;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class StationIndex {
+
+    public static Logger logger1;
+
+
     private final Map<Integer, Line> number2line;
     private final TreeSet<Station> stations;
     private final Map<Station, TreeSet<Station>> connections;
@@ -39,8 +45,10 @@ public class StationIndex {
     }
 
     public Station getStation(String name) {
+        logger1 = LogManager.getLogger("info");
         for (Station station : stations) {
             if (station.getName().equalsIgnoreCase(name)) {
+                logger1.info("Станция: " + station);
                 return station;
             }
         }
