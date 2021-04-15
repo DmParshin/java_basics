@@ -1,5 +1,11 @@
+import java.io.File;
+import java.io.IOException;
+
 public class FileUtils {
-    public static void copyFolder(String sourceDirectory, String destinationDirectory) {
-        // TODO: write code copy content of sourceDirectory to destinationDirectory
+    public static void copyFolder(String sourceDirectory, String destinationDirectory) throws IOException {
+        File srcdir = new File(sourceDirectory);
+        File dstdir = new File(destinationDirectory);
+        org.apache.commons.io.FileUtils.copyDirectory(srcdir, dstdir);
+
     }
 }
