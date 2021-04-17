@@ -44,14 +44,21 @@ public class Main {
         System.out.println(name.substring(1) + " - file downloaded");
 
         URL url = new URL(src);
-        InputStream in = url.openStream(); //Open a URL Stream
 
-        OutputStream out = new BufferedOutputStream(new FileOutputStream( folderPath+ name));
+//        InputStream in = url.openStream(); //Open a URL Stream
+//        OutputStream out = new BufferedOutputStream(new FileOutputStream( folderPath+ name));
 
-        for (int b; (b = in.read()) != -1;) {
-            out.write(b);
+        try (InputStream in = url.openStream();
+             OutputStream out = new BufferedOutputStream(new FileOutputStream( folderPath+ name))) {
+
+            for (int b; (b = in.read()) != -1; ) {
+                out.write(b);
+            }
+//            out.close();
+//            in.close();
         }
-        out.close();
-        in.close();
+        catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
