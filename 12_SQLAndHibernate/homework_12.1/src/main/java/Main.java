@@ -2,21 +2,22 @@ import java.sql.*;
 
 
 public class Main {
-    public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/skillbox";
-        String user = "root";
-        String pass = "789654123";
+    private static final String URL = "jdbc:mysql://localhost:3306/skillbox";
+    private static final String USER = "root";
+    private static final String PASS = "789654123";
+    private static final String SQL_QUERY = "SELECT pl.course_name, pl.subscription_date FROM PurchaseList pl " +
+            "WHERE pl.course_name = ? and MONTH(pl.subscription_date) = ?";
 
-        try (Connection connection = DriverManager.getConnection(url, user, pass);
+    public static void main(String[] args) {
+
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASS);
              Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery("SELECT * FROM Courses ORDER BY name;");)
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM Courses ORDER BY name;");
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);)
         {
             while (resultSet.next()){
                 String courseName = resultSet.getString("name");
                 System.out.println(courseName);
-                String SQL = "SELECT pl.course_name, pl.subscription_date FROM PurchaseList pl WHERE pl.course_name = ? " +
-                        "and MONTH(pl.subscription_date) = ?";
-                try (PreparedStatement preparedStatement = connection.prepareStatement(SQL);){
                     int countMonths = 0;
                     int lastMonth = 0;
                     for(int i = 1; i <= 12; i++) {
@@ -34,7 +35,6 @@ public class Main {
                         System.out.printf("\tСреднее количество покупок в месяц для курса: %.2f %n", avg);
                     }else
                         System.out.println("\tПокупок не было");
-                }
             }
         }
         catch (Exception e){
