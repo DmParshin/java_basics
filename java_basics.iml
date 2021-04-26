@@ -3,9 +3,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.1/IntegerExperiments/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.4/AllCodesOfChars/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/06_NumbersStringsAndDates/homework_6.4/TotalEarningsCalculator/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/08_InheritanceAndPolymorphism/homework_8.4/src" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/out" />
