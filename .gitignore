@@ -197,6 +197,27 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Images
+*.bmp
+*.ecw
+*.gif
+*.ico
+*.ilbm
+*.jpeg
+*.jpg
+*.mrsid
+*.pcx
+*.png
+*.psd
+*.tga
+*.tiff
+*.webp
+*.xbm
+*.xps
+*.rla
+*.rpf
+*.pnm
+
 # End of https://www.gitignore.io/api/java,linux,macos,maven,windows,jetbrains
 18_Algorithms/.idea
 **/.idea
