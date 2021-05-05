@@ -8,6 +8,8 @@ public class Account {
     private String accNumber;
     private boolean lock;
 
+
+
     public Account() {
         this.money = 0;
         this.accNumber = String.valueOf(random.nextInt(999999999) + 1000000000);

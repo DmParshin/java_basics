@@ -27,11 +27,11 @@ public class Main {
             writer.write("\t" + value + "\n");
             writer.flush();
             tab = "\t";
-            PrintMap(value.toString(), tab);
+            printMap(value.toString(), tab);
         }
     }
 
-    public static void PrintMap(String string, String tab) throws IOException {
+    public static void printMap(String string, String tab) throws IOException {
         try(FileWriter writer = new FileWriter("files/parser.txt", true))
         {
             tab = tab + "\t";
@@ -41,7 +41,7 @@ public class Main {
                         System.out.println(tab + value.toString());
                         writer.write(tab + value.toString() + "\n");
                         writer.flush();
-                        PrintMap(value.toString(), tab);
+                        printMap(value.toString(), tab);
                     }
                 }
             }
