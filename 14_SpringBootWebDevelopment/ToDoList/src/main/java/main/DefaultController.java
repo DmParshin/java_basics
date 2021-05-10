@@ -1,5 +1,7 @@
 package main;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,7 +11,11 @@ import java.util.Date;
 
 public class DefaultController {
     @RequestMapping("/")
-    public String index(){
-        return (new Date().toString());
+    public ResponseEntity<Date> getCountry() {
+
+        var headers = new HttpHeaders();
+        headers.add("Responded", "DefaultController");
+
+        return ResponseEntity.accepted().headers(headers).body(new Date());
     }
 }
