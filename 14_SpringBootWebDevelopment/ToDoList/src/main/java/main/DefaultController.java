@@ -16,6 +16,6 @@ public class DefaultController {
         var headers = new HttpHeaders();
         headers.add("Responded", "DefaultController");
 
-        return ResponseEntity.accepted().headers(headers).body(new Date());
+        return ResponseEntity.ok(new Date());
     }
 }
