@@ -1,35 +1,46 @@
 package main;
 
+import main.model.DealRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import request.DealDoneRequest;
 import request.DealRequest;
-import response.Deal;
+import main.model.Deal;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class DealController {
 
+    @Autowired
+    private DealRepository dealRepository;
+
     @GetMapping("/deals/")
     public List<Deal> gelAll(){
-        return Storage.getAllDeals();
+        Iterable<Deal> dealIterable = dealRepository.findAll();
+        ArrayList<Deal> dealArrayList = new ArrayList<>();
+        dealIterable.forEach(deal -> dealArrayList.add(deal));
+        return dealArrayList;
     }
 
     @GetMapping("/deals/{id}")
     public ResponseEntity get(@PathVariable int id){
-        Deal deal = Storage.getDeal(id);
-        if (deal == null){
+        Optional<Deal>optionalDeal = dealRepository.findById(id);
+        if (!optionalDeal.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        return ResponseEntity.status(HttpStatus.OK).body(deal);
+        return ResponseEntity.status(HttpStatus.OK).body(optionalDeal.get());
     }
 
     @PostMapping("/deals/")
     public int add(Deal deal){
-        return Storage.addDeal(deal);
+        Deal newDeal = dealRepository.save(deal);
+        return newDeal.getId();
     }
 
     @PostMapping("/deals/{id}")
@@ -39,8 +50,9 @@ public class DealController {
 
     @DeleteMapping("/deals/")
     public ResponseEntity delAll(){
-        if (Storage.getAllDeals().size() != 0){
-            Storage.delAllDeal();
+        Iterable<Deal> dealIterable = dealRepository.findAll();
+        if (dealRepository.count() > 0){
+            dealRepository.deleteAll();
             return ResponseEntity.status(HttpStatus.OK).body(null);
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -48,11 +60,11 @@ public class DealController {
 
     @DeleteMapping("/deals/{id}")
     public ResponseEntity del(@PathVariable int id){
-        Deal deal = Storage.getDeal(id);
-        if (deal == null){
+        Optional<Deal>optionalDeal = dealRepository.findById(id);
+        if (!optionalDeal.isPresent()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
-        Storage.delDeal(id);
+        dealRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
@@ -62,7 +74,12 @@ public class DealController {
             @Valid @RequestBody DealRequest request,
             @PathVariable int id
     ) {
-        Storage.updateDeal(id, request.number, request.name, request.done);
+        Deal deal = new Deal();
+        deal.setId(id);
+        deal.setNumber(request.number);
+        deal.setName(request.name);
+        deal.setDone(request.done);
+        dealRepository.save(deal);
     }
 
     @PutMapping("/deals/")
@@ -70,6 +87,10 @@ public class DealController {
     public void updateAllDeal(
             @Valid @RequestBody DealDoneRequest request
     ) {
-        Storage.updateAllDeal(Boolean.valueOf(request.done));
+        Iterable<Deal> dealIterable = dealRepository.findAll();
+        for(Deal deal : dealIterable){
+            deal.setDone(request.done);
+            dealRepository.save(deal);
+        }
     }
 }

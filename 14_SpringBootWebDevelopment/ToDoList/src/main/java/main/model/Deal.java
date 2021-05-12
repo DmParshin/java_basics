@@ -1,10 +1,23 @@
-package response;
+package main.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Deal {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id; //уникальный номер
+
     private int number; //порядковый номер
+
     private String name; //имя дела
+
     private boolean done; //дело выполено
+
 
     public int getId() {
         return id;
