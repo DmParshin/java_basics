@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>..:: ToDoList ::..</title>
+</head>
+<body>
+<div style="text-align:center">
+<h1>..:: ToDoList ::..</h1>
+	<hr />
+	<div th:each="deal : ${deals}">
+		<a href="#" class="meal_link" th:attr="data-id=${deal.id}" th:text="${deal.name}"></a>
+	</div>
+</div>
+</body>
+</html>
