@@ -1,6 +1,7 @@
 import org.redisson.api.RScoredSortedSet;
 import org.redisson.client.protocol.ScoredEntry;
 
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +30,8 @@ public class Main {
                 System.out.println("User" + entry.getValue());
                 i++;
                 if(i % 10 == 0){
-                    redis.changeRegTime(0, new Random().nextInt(COUNT + 1));
+                    Double min = sortedSet.firstScore();
+                    redis.changeRegTime(min - 1, new Random().nextInt(COUNT + 1));
                 }
                 TimeUnit.SECONDS.sleep(1);
             }
