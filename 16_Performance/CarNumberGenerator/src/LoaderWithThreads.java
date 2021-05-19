@@ -1,12 +1,16 @@
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
-public class Loader {
+public class LoaderWithThreads {
+
+    static int count = 1;
 
     public static void main(String[] args) throws Exception {
-        long start = System.currentTimeMillis();
 
-        PrintWriter writer = new PrintWriter("res/numbers.txt");
+        ArrayList<Thread> threadsArray = new ArrayList<>();
+
+        long start = System.currentTimeMillis();
 
         char letters[] = {'У', 'К', 'Е', 'Н', 'Х', 'В', 'А', 'Р', 'О', 'С', 'М', 'Т'};
 
@@ -16,23 +20,22 @@ public class Loader {
                 for (char firstLetter : letters) {
                     for (char secondLetter : letters) {
                         for (char thirdLetter : letters) {
-
                             stringBuilder.append(firstLetter);
                             stringBuilder.append(padNumber(number, 3));
                             stringBuilder.append(secondLetter);
                             stringBuilder.append(thirdLetter);
                             stringBuilder.append(padNumber(regionCode, 2));
                             stringBuilder.append("\n");
-
                         }
                     }
                 }
             }
-            writer.write(stringBuilder.toString());
+            threadsArray.add(writeThread(stringBuilder));
         }
 
-        writer.flush();
-        writer.close();
+        for(Thread thread:threadsArray) {
+            thread.join();
+        }
 
         System.out.println((System.currentTimeMillis() - start) + " ms");
     }
@@ -47,11 +50,24 @@ public class Loader {
     }
 
 //    private static String padNumber(int number, int numberLength) {
-//        StringBuilder numberStr = new StringBuilder(String.valueOf(number));
+//        String numberStr = Integer.toString(number);
 //        int padSize = numberLength - numberStr.length();
 //        for (int i = 0; i < padSize; i++) {
-//            numberStr.append(String.valueOf("0" + numberStr));
+//            numberStr = '0' + numberStr;
 //        }
-//        return numberStr.toString();
+//        return numberStr;
 //    }
+
+    private static Thread writeThread(StringBuilder stringBuilder) throws FileNotFoundException {
+        PrintWriter writer = new PrintWriter("res/region" + count + ".txt");
+        count++;
+        Runnable runnable = ()->{
+            writer.write(stringBuilder.toString());
+            writer.flush();
+            writer.close();
+        };
+        Thread myThread = new Thread(runnable);
+        myThread.start();
+        return myThread;
+    }
 }
