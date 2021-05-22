@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MainForm">
+  <grid id="27dc6" binding="mainPanel" layout-manager="BorderLayout" hgap="5" vgap="5">
+    <constraints>
+      <xy x="20" y="302" width="500" height="118"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="ac031" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="South"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="8ca22" class="javax.swing.JButton" binding="collapseButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <text value="Collapse"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="d608" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+        <constraints border-constraint="North"/>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="1e53a" class="javax.swing.JLabel" binding="surname">
+            <constraints/>
+            <properties>
+              <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Фамилия"/>
+            </properties>
+          </component>
+          <component id="7a726" class="javax.swing.JTextField" binding="surnameField">
+            <constraints/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <margin top="2" left="6" bottom="2" right="6"/>
+              <maximumSize width="80" height="30"/>
+              <name value="Отчество"/>
+              <preferredSize width="100" height="30"/>
+            </properties>
+          </component>
+          <component id="f43b7" class="javax.swing.JLabel" binding="firstName">
+            <constraints/>
+            <properties>
+              <enabled value="true"/>
+              <foreground color="-16777216"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <opaque value="false"/>
+              <text value="Имя"/>
+              <visible value="true"/>
+            </properties>
+          </component>
+          <component id="3cea7" class="javax.swing.JTextField" binding="firstNameField">
+            <constraints/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <preferredSize width="100" height="30"/>
+            </properties>
+          </component>
+          <component id="c7e78" class="javax.swing.JLabel" binding="secondName">
+            <constraints/>
+            <properties>
+              <foreground color="-16777216"/>
+              <text value="Отчество"/>
+            </properties>
+          </component>
+          <component id="4c7a1" class="javax.swing.JTextField" binding="secondNameField">
+            <constraints/>
+            <properties>
+              <horizontalAlignment value="0"/>
+              <preferredSize width="100" height="30"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <component id="5c4b5" class="javax.swing.JTextPane" binding="textPane1" default-binding="true">
+        <constraints border-constraint="Center"/>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
