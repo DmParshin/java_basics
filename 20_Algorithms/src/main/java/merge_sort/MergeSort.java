@@ -1,5 +1,7 @@
 package merge_sort;
 
+import java.util.Collections;
+
 public class MergeSort
 {
     public static void mergeSort(int[] array)
@@ -26,6 +28,23 @@ public class MergeSort
 
     private static void merge(int[] array, int[] left, int[] right)
     {
-        //TODO
+        int positionLeft = 0;
+        int positionRight = 0;
+
+        for (int i = 0; i < array.length; i++) {
+            if (positionLeft == left.length) {
+                array[i] = right[positionRight];
+                positionRight++;
+            } else if (positionRight == right.length) {
+                array[i] = left[positionLeft];
+                positionLeft++;
+            } else if (left[positionLeft] < right[positionRight]) {
+                array[i] = left[positionLeft];
+                positionLeft++;
+            } else {
+                array[i] = right[positionRight];
+                positionRight++;
+            }
+        }
     }
 }
