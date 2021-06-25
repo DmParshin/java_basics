@@ -26,7 +26,7 @@ class RabinKarpExtendedTest {
     }
 
     @Test
-    @DisplayName("Искомой подстраки в тексте нет")
+    @DisplayName("Искомой подстроки в тексте нет")
     public void notFoundTest(){
         String text = "ASDF";
         String query = "SDFA";
