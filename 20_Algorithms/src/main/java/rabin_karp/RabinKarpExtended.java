@@ -32,10 +32,6 @@ public class RabinKarpExtended
             else indices.clear();
         }
 
-        HashSet<Integer>hashSet = new HashSet<>();
-        for(int key : number2position.keySet()){ hashSet.add(number2position.get(key));}
-        check(hashSet.size());
-
         if(indices.size() != query.length()){
             indices.clear();
             return indices;}
@@ -47,12 +43,12 @@ public class RabinKarpExtended
         for (int i = 0; i < text.length(); i++) {
             number2position.put(i, (int) text.charAt(i));
         }
-    }
 
-    private void check(int number){
-        if(number > 9){
-            System.err.println("Алфавит больше 9 символов");
-            System.exit(1);
+        HashSet<Integer>hashSet = new HashSet<>();
+        for(int key : number2position.keySet()){ hashSet.add(number2position.get(key));}
+
+        if (hashSet.size() > 9) {
+            throw new IllegalArgumentException("Алфавит больше 9 символов");
         }
     }
 
